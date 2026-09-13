@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartSolarMicrogrid"
+        android:usesCleartextTraffic="true">
+
+        <!-- Google Maps API Key placeholder -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDummyMapsApiKeyForEvaluation" />
+
+        <!-- Splash Activity (Launcher) -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth Activities -->
+        <activity android:name=".activities.LoginActivity" android:exported="false" />
+        <activity android:name=".activities.RegisterActivity" android:exported="false" />
+
+        <!-- Prosumer Activities -->
+        <activity android:name=".activities.ProsumerMainActivity" android:exported="false" />
+        <activity android:name=".activities.NewReservationActivity" android:exported="false" />
+        <activity android:name=".activities.BookingHistoryActivity" android:exported="false" />
+        <activity android:name=".activities.ReservationDetailActivity" android:exported="false" />
+        <activity android:name=".activities.NearbyStationsMapActivity" android:exported="false" />
+        <activity android:name=".activities.ProfileActivity" android:exported="false" />
+
+        <!-- Operator Activities -->
+        <activity android:name=".activities.OperatorMainActivity" android:exported="false" />
+        <activity android:name=".activities.OperatorScannerActivity" android:exported="false" />
+
+    </application>
+
+</manifest>

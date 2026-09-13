@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Smart Solar Microgrid</string>
+    <string name="tagline">Decentralized Clean Energy Trading</string>
+    <string name="login">Login</string>
+    <string name="register">Register Prosumer</string>
+    <string name="nic_hint">National Identity Card (NIC)</string>
+    <string name="password_hint">Password</string>
+    <string name="fullname_hint">Full Name</string>
+    <string name="email_hint">Email Address</string>
+    <string name="phone_hint">Mobile Phone</string>
+    <string name="address_hint">Premises Address</string>
+    <string name="solar_cap_hint">Solar Capacity (kW/h)</string>
+    <string name="prosumer_dashboard">Prosumer Dashboard</string>
+    <string name="operator_dashboard">Operator Console</string>
+    <string name="new_reservation">New Power Reservation</string>
+    <string name="my_bookings">My Reservations</string>
+    <string name="nearby_stations">Nearby Solar Hubs</string>
+    <string name="profile">Account & Profile</string>
+    <string name="qr_scan">Scan Prosumer QR</string>
+</resources>
