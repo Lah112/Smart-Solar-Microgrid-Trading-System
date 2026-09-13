@@ -1,0 +1,26 @@
+# .NET
+bin/
+obj/
+*.user
+appsettings.Production.json
+
+# Node
+node_modules/
+dist/
+.env
+
+# Android
+.gradle/
+build/
+local.properties
+*.apk
+
+# IDE
+.vs/
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
