@@ -21,7 +21,7 @@ db.EnergyReservations.drop();
 
 // 1. Users Collection
 // Passwords hashed using BCrypt for "Password@123"
-const defaultPasswordHash = "$2a$11$qRzPsmGgZJg5Yw1x9BvhMeO6jDq1b1J0lO78u5XgPj4M2Zp9.G8O."; 
+const defaultPasswordHash = "$2a$11$0hjLGnKDHdP8OekLyRxDsOkdtCWo0.J505IFnS8LNmTSWPs4fYIzG";
 
 db.Users.insertMany([
   {
