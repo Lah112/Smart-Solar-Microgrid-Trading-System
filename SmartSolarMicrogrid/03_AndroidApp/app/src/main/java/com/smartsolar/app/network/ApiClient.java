@@ -34,7 +34,7 @@ import okhttp3.Response;
  */
 public class ApiClient {
 
-    public static String BASE_URL = "http://10.0.2.2:5000/api";
+    public static String BASE_URL = "http://10.0.2.2:5179/api";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     private static ApiClient instance;

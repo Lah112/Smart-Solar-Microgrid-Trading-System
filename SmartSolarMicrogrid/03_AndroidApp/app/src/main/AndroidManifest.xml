@@ -22,7 +22,7 @@
         <!-- Google Maps API Key placeholder -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDummyMapsApiKeyForEvaluation" />
+            android:value="AIzaSyDXin6khA2oH4t4wWLG4sOAnOy-I5LzNrw" />
 
         <!-- Splash Activity (Launcher) -->
         <activity

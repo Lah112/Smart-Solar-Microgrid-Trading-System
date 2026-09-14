@@ -15,6 +15,6 @@
     <string name="new_reservation">New Power Reservation</string>
     <string name="my_bookings">My Reservations</string>
     <string name="nearby_stations">Nearby Solar Hubs</string>
-    <string name="profile">Account & Profile</string>
+    <string name="profile">Account &amp; Profile</string>
     <string name="qr_scan">Scan Prosumer QR</string>
 </resources>

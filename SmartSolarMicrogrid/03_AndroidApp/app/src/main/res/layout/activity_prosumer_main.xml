@@ -17,7 +17,7 @@
             android:orientation="vertical"
             android:padding="20dp">
 
-            <!-- Header with greeting & logout -->
+            <!-- Header with greeting &amp; logout -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
