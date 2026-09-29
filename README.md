@@ -83,9 +83,9 @@ mongosh "mongodb://localhost:27017/SmartSolarDb" init-mongo.js
 ```bash
 cd SmartSolarMicrogrid/01_WebAPI/SmartSolar.API
 dotnet restore
-dotnet run --urls="http://localhost:5000"
+dotnet run --urls="http://localhost:5179"
 ```
-- **Interactive Swagger Documentation**: Open [http://localhost:5000](http://localhost:5000) in your browser.
+- **Interactive Swagger Documentation**: Open [http://localhost:5179](http://localhost:5179) in your browser.
 - **IIS Deployment**: Pre-configured with `web.config` for in-process IIS hosting.
 
 ---
@@ -154,3 +154,6 @@ npm run dev
 - [x] **12-Hour Notice Rule**: Updates and cancellations strictly require $\ge 12$ hours notice prior to scheduled slot time.
 - [x] **Pure Native Android**: Standard Android SDK, Java, SQLite (`DatabaseHelper`), Material Design 3, no cross-platform frameworks.
 - [x] **Code Documentation**: Comment header blocks on all `.cs` files & inline method documentation throughout.
+
+
+**dotnet run --urls="http://0.0.0.0:5179"**

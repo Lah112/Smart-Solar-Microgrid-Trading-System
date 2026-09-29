@@ -7,24 +7,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.smartsolar.app.R;
 import com.smartsolar.app.adapters.StationAdapter;
 import com.smartsolar.app.models.Station;
 import com.smartsolar.app.network.ApiClient;
 
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NearbyStationsMapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class NearbyStationsMapActivity extends AppCompatActivity {
 
-    private GoogleMap mMap;
+    private MapView mapView;
+    private IMapController mapController;
     private RecyclerView rvNearbyStations;
     private ApiClient apiClient;
     private StationAdapter adapter;
@@ -33,34 +34,34 @@ public class NearbyStationsMapActivity extends AppCompatActivity implements OnMa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize OSMDroid configuration before layout inflation
+        Configuration.getInstance().load(this, getSharedPreferences("osmdroid", MODE_PRIVATE));
+        Configuration.getInstance().setUserAgentValue(getPackageName());
+
         setContentView(R.layout.activity_nearby_stations_map);
 
         apiClient = ApiClient.getInstance(this);
 
+        mapView = findViewById(R.id.mapView);
+        mapView.setTileSource(TileSourceFactory.MAPNIK);
+        mapView.setMultiTouchControls(true);
+
+        mapController = mapView.getController();
+        mapController.setZoom(12.0);
+        GeoPoint colombo = new GeoPoint(6.9271, 79.8612);
+        mapController.setCenter(colombo);
+
         rvNearbyStations = findViewById(R.id.rvNearbyStations);
         rvNearbyStations.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         adapter = new StationAdapter(this, stationList, station -> {
-            if (mMap != null) {
-                LatLng pos = new LatLng(station.getLatitude(), station.getLongitude());
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pos, 14f));
+            if (mapController != null) {
+                GeoPoint pos = new GeoPoint(station.getLatitude(), station.getLongitude());
+                mapController.setZoom(15.0);
+                mapController.animateTo(pos);
             }
         });
         rvNearbyStations.setAdapter(adapter);
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-
-        // Default camera centered on Colombo, Sri Lanka
-        LatLng colombo = new LatLng(6.9271, 79.8612);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(colombo, 11f));
 
         loadNearbyStations(6.9271, 79.8612);
     }
@@ -73,20 +74,23 @@ public class NearbyStationsMapActivity extends AppCompatActivity implements OnMa
                 stationList.addAll(stations);
                 adapter.notifyDataSetChanged();
 
-                if (mMap != null) {
-                    mMap.clear();
+                if (mapView != null) {
+                    mapView.getOverlays().clear();
                     for (Station s : stations) {
-                        LatLng pos = new LatLng(s.getLatitude(), s.getLongitude());
-                        mMap.addMarker(new MarkerOptions()
-                                .position(pos)
-                                .title(s.getName() + " (" + s.getStationCode() + ")")
-                                .snippet(s.getCapacityKWh() + " kWh | " + s.getAvailableBatterySlots() + " slots free | Buy: Rs." + s.getUnitRateBuy())
-                                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+                        GeoPoint pos = new GeoPoint(s.getLatitude(), s.getLongitude());
+                        Marker marker = new Marker(mapView);
+                        marker.setPosition(pos);
+                        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                        marker.setTitle(s.getName() + " (" + s.getStationCode() + ")");
+                        marker.setSnippet(s.getCapacityKWh() + " kWh | " + s.getAvailableBatterySlots() + " slots free | Buy: Rs." + s.getUnitRateBuy());
+                        mapView.getOverlays().add(marker);
                     }
+                    mapView.invalidate();
 
                     if (!stations.isEmpty()) {
                         Station first = stations.get(0);
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(first.getLatitude(), first.getLongitude()), 12f));
+                        mapController.setZoom(13.0);
+                        mapController.animateTo(new GeoPoint(first.getLatitude(), first.getLongitude()));
                     }
                 }
             }
@@ -96,5 +100,21 @@ public class NearbyStationsMapActivity extends AppCompatActivity implements OnMa
                 Toast.makeText(NearbyStationsMapActivity.this, "Failed to load station map pins: " + errorMessage, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mapView != null) {
+            mapView.onResume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mapView != null) {
+            mapView.onPause();
+        }
     }
 }
