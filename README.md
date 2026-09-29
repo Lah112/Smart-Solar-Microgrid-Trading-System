@@ -18,7 +18,7 @@ An end-to-end Enterprise Application developed for **SE4040: Enterprise Applicat
 ## 🔗 Project Links
 
 - **GitHub Repository**: [https://github.com/Lah112/Smart-Solar-Microgrid-Trading-System](https://github.com/Lah112/Smart-Solar-Microgrid-Trading-System)
-- **Demo & Explanation Video (5 Mins)**: (drive.google.com/file/d/1Fs91EWoEyAWI6XiYNmRCGLCUIe2c3OS1/view?usp=sharing)
+- **Demo & Explanation Video (5 Mins)**: (https://drive.google.com/file/d/1Fs91EWoEyAWI6XiYNmRCGLCUIe2c3OS1/view?usp=sharing)
 
 ---
 
