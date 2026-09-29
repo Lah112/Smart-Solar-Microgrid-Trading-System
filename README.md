@@ -91,7 +91,7 @@ dotnet run --urls="http://localhost:5000"
 ---
 
 ### 4. Running the Web Application (`02_WebApp`)
-```bash
+```
 cd SmartSolarMicrogrid/02_WebApp
 npm install
 npm run dev

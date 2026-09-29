@@ -20,15 +20,25 @@ namespace SmartSolar.API.Services
     /// </summary>
     public interface IReservationService
     {
+        // Retrieves reservations matching the requested filters.
         Task<List<EnergyReservation>> GetReservationsAsync(ReservationFilterDto filter);
+        // Retrieves a reservation by its database ID.
         Task<EnergyReservation?> GetReservationByIdAsync(string id);
+        // Retrieves a reservation by its reservation number.
         Task<EnergyReservation?> GetReservationByNumberAsync(string reservationNumber);
+        // Retrieves reservation history for a prosumer, optionally filtered by status.
         Task<List<EnergyReservation>> GetProsumerReservationsAsync(string nic, string? status = null);
+        // Creates a reservation after enforcing business rules.
         Task<ReservationSummaryDto> CreateReservationAsync(CreateReservationDto request);
+        // Updates a reservation and enforces ownership and timing rules.
         Task<ReservationSummaryDto> UpdateReservationAsync(string id, UpdateReservationDto request, string userNic, string role);
+        // Cancels a reservation and enforces ownership and timing rules.
         Task<ReservationSummaryDto> CancelReservationAsync(string id, CancelReservationDto request, string userNic, string role);
+        // Approves a pending reservation and prepares its QR data.
         Task<ReservationSummaryDto> ApproveReservationAsync(string id);
+        // Verifies a scanned QR token and finalizes the reservation.
         Task<ReservationSummaryDto> VerifyAndFinalizeQrAsync(VerifyQrDto request, string operatorNic);
+        // Retrieves dashboard totals for the reservation system.
         Task<DashboardStatsDto> GetDashboardStatsAsync();
     }
 }

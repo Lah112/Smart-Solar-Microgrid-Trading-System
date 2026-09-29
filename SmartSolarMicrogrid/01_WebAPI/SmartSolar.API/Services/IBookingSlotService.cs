@@ -21,10 +21,15 @@ namespace SmartSolar.API.Services
     /// </summary>
     public interface IBookingSlotService
     {
+        // Retrieves booking slots for a station on a specific date.
         Task<List<EnergyBookingSlot>> GetSlotsByStationAndDateAsync(string stationId, DateTime date);
+        // Creates a booking slot.
         Task<EnergyBookingSlot> CreateSlotAsync(CreateSlotDto request);
+        // Updates an existing booking slot.
         Task<EnergyBookingSlot> UpdateSlotAsync(string id, UpdateSlotDto request);
+        // Deletes a booking slot by ID.
         Task<bool> DeleteSlotAsync(string id);
+        // Generates the default daily schedule for a station.
         Task<List<EnergyBookingSlot>> GenerateDefaultDailySlotsAsync(string stationId, DateTime date);
     }
 }

@@ -226,6 +226,7 @@ namespace SmartSolar.API.Services
         /// </summary>
         private static UserDto MapToUserDto(User user)
         {
+            // Map the user entity to its API response DTO.
             return new UserDto
             {
                 Id = user.Id,

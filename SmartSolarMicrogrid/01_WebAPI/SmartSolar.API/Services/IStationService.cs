@@ -20,14 +20,23 @@ namespace SmartSolar.API.Services
     /// </summary>
     public interface IStationService
     {
+        // Retrieves all stations, optionally limited to active stations.
         Task<List<SolarStationInfo>> GetAllStationsAsync(bool? activeOnly = null);
+        // Retrieves a station by its database ID.
         Task<SolarStationInfo?> GetStationByIdAsync(string id);
+        // Retrieves a station by its station code.
         Task<SolarStationInfo?> GetStationByCodeAsync(string stationCode);
+        // Creates a solar station.
         Task<SolarStationInfo> CreateStationAsync(CreateStationDto request);
+        // Updates an existing solar station.
         Task<SolarStationInfo> UpdateStationAsync(string id, UpdateStationDto request);
+        // Deactivates a station when business rules permit.
         Task<bool> DeactivateStationAsync(string id);
+        // Reactivates a station.
         Task<bool> ReactivateStationAsync(string id);
+        // Retrieves nearby stations within the requested radius.
         Task<List<StationResponseDto>> GetNearbyStationsAsync(double latitude, double longitude, double radiusKm = 50);
+        // Updates the number of available battery slots.
         Task<SolarStationInfo> UpdateBatterySlotsAsync(string id, int availableSlots);
     }
 }

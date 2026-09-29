@@ -18,8 +18,11 @@ namespace SmartSolar.API.Services
     /// </summary>
     public interface IAuthService
     {
+        // Authenticates a user and returns their profile with a JWT.
         Task<LoginResponseDto> LoginAsync(LoginRequestDto request);
+        // Registers a new prosumer account.
         Task<UserDto> RegisterProsumerAsync(RegisterProsumerDto request);
+        // Retrieves the profile for the authenticated user's NIC.
         Task<UserDto> GetCurrentUserProfileAsync(string nic);
     }
 }

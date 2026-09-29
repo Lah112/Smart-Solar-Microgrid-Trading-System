@@ -56,7 +56,7 @@ string content = File.ReadAllText(seedPath);
 string patched = Regex.Replace(
     content,
     "(const\\s+defaultPasswordHash\\s*=\\s*\")[^\"]*(\")",
-    "$1" + hash + "$2");
+    match => match.Groups[1].Value + hash + match.Groups[2].Value);
 
 if (patched == content)
 {

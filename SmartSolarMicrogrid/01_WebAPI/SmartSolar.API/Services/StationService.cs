@@ -244,6 +244,7 @@ namespace SmartSolar.API.Services
         /// </summary>
         private static double CalculateDistanceKm(double lat1, double lon1, double lat2, double lon2)
         {
+            // Calculate the great-circle distance between two coordinates.
             const double earthRadiusKm = 6371.0;
             var dLat = (lat2 - lat1) * (Math.PI / 180.0);
             var dLon = (lon2 - lon1) * (Math.PI / 180.0);
