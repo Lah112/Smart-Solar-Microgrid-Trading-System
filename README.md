@@ -8,10 +8,10 @@ An end-to-end Enterprise Application developed for **SE4040: Enterprise Applicat
 
 | IT Number | Student Name | Role & Assigned Module | Key Contributions |
 |---|---|---|---|
-| **IT22001122** | Chamara R M L K | **Lead & C# Web API (IIS & FAT Service)** | ASP.NET Core Web API, MongoDB driver, 7-day rule, 12-hour rule, station deactivation guard, JWT auth, QRCoder, IIS web.config |
-| **IT22003344** | Member 2 | **Web Application (React & Tailwind CSS)** | Backoffice admin portal, Grid Operator dispatch console, Prosumer activations, Microgrid node management, Axios API layer |
-| **IT22005566** | Member 3 | **Pure Native Android Application (Core)** | Android Java architecture, SQLite persistence (`DatabaseHelper`), Prosumer register/login with NIC, New 7-day slot reservations |
-| **IT22007788** | Member 4 | **Pure Native Android (Maps & QR Scanner)** | Google Maps API integration, ZXing QR generation, Operator camera scanner, 12-hour cancellation/modification dialogs |
+| **IT22001122** | Chamara R M L K | **Lead & C# Web API (IIS & FAT Service)** | Web Application – User Management, Prosumer Management, Frontend (Bootstrap 5), Report writing. Web Service – C# Web API, MongoDB, FAT Service pattern, IIS deployment |
+| **IT22552860** | RANATHUNGA R A K N | **Web Application (React & Tailwind CSS)** | Web Application – Microgrid Node Management, Reservation Management, Web API integration |
+| **IT22630834** | MALKITH G W L | **Pure Native Android Application (Core)** | Mobile Application – Registration, Login, Profile Management, SQLite persistence |
+| **IT22266996** | GIMHAN T P K | **Pure Native Android (Maps & QR Scanner)** | Mobile Application – Reservation Workflow, QR Code, Google Maps, Dashboard |
 
 ---
 
