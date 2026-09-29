@@ -155,7 +155,8 @@ npm run dev
 - [x] **Pure Native Android**: Standard Android SDK, Java, SQLite (`DatabaseHelper`), Material Design 3, no cross-platform frameworks.
 - [x] **Code Documentation**: Comment header blocks on all `.cs` files & inline method documentation throughout.
 
-=====================================================================================================================
+========================================================================================
+
 npm run dev
 
 dotnet run --urls="http://0.0.0.0:5179"
