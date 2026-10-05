@@ -18,7 +18,7 @@ An end-to-end Enterprise Application developed for **SE4040: Enterprise Applicat
 ## 🔗 Project Links
 
 - **GitHub Repository**: [https://github.com/Lah112/Smart-Solar-Microgrid-Trading-System](https://github.com/Lah112/Smart-Solar-Microgrid-Trading-System)
-- **Demo & Explanation Video (5 Mins)**: [https://youtu.be/SmartSolarMicrogridDemo2026](https://youtu.be/SmartSolarMicrogridDemo2026)
+- **Demo & Explanation Video (5 Mins)**: (https://drive.google.com/file/d/1Fs91EWoEyAWI6XiYNmRCGLCUIe2c3OS1/view?usp=sharing)
 
 ---
 
@@ -154,6 +154,15 @@ npm run dev
 - [x] **12-Hour Notice Rule**: Updates and cancellations strictly require $\ge 12$ hours notice prior to scheduled slot time.
 - [x] **Pure Native Android**: Standard Android SDK, Java, SQLite (`DatabaseHelper`), Material Design 3, no cross-platform frameworks.
 - [x] **Code Documentation**: Comment header blocks on all `.cs` files & inline method documentation throughout.
+
+==================
+
+npm run dev
+
+dotnet run --urls="http://0.0.0.0:5179"
+
+http://localhost:5000/index.html
+      
 
 
 **dotnet run --urls="http://0.0.0.0:5179"**
